@@ -1,0 +1,24 @@
+#### 3.x changes
+
+- event handlers now act like attributes [breaking]
+- fewer change watchers
+- autocomplete check temporarily removed
+- templates can now be registered as components
+- key={{value}} and key='{{value}}' behave differently.
+- repeat attributes are now applied to the element they're attached to. E.g: `<li repeat.each={{numbers}} as='number'>{{number}}</li>`
+- template.view() does not call `update` if the context is not currently present
+- `.bind()` has been changed to `update()`
+- you must call `require("paperclip/register")` to `require()` pc templates
+- binding blocks are completely deprecated {{#}}
+- assignments within blocks are no longer supported
+- [brackets] are no supported within blocks
+- event handlers no longer prevent default.
+- event handlers are now native
+- camelCase on event handlers is no longer supported
+- event handlers must now be defined without quotes
+- onFocusIn -> onfocus
+- onFocusOut -> onblur
+- easeIn -> easein
+- easeout -> easeout
+- registered component names & attributes are now case sensitive
+- `update` has been deprecated in views. Use `render` instead.
