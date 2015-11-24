@@ -17,7 +17,6 @@ module.exports = Base.extend(TraverseComponent, {
 
     var key      = this.key || "key";
 
-    var n        = 0;
     var self     = this;
     var parent   = this.view;
 
@@ -29,20 +28,17 @@ module.exports = Base.extend(TraverseComponent, {
       });
       this._children = [];
       src.select(query,function(objs){
-        for(var i=0;i<objs.length;i++){
-          var loopElem = objs[i];
-          var child;
+
           if (as) {
-            properties     = { };
-            properties[as] = loopElem;
+              properties     = { };
+              properties[as] = objs;
           } else {
-            properties = loopElem;
+              properties = objs;
           }
-          child = self.childTemplate.view(properties, {parent: parent });
+          var child = self.childTemplate.view(properties, {parent: parent });
           self._children.push(child);
           self.section.appendChild(child.render());
-          n++;
-        }
+
       });
     }
   }

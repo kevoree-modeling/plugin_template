@@ -45,8 +45,14 @@
     </repeat>
     </ul>
 
-    <traverse src="{{elem}}" query="sensors |=value" as="i">
-        <b>Traversed : {{i}}</b><br />
+    <traverse src="{{elem}}" query="sensors |=value" as="sensorValues">
+
+        <b>Traversed : {{sensorValues}}, length:{{sensorValues.length}}</b><br />
+
+        <repeat each="{{ sensorValues }}" as="sensorValue">
+            val={{sensorValue}}<br />
+        </repeat>
+
     </traverse>
 
     <infer src="{{profile}}" dependency_1={{elem}} as="profileResult">
