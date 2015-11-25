@@ -26,9 +26,6 @@ public class Main {
     public static final int BASE_TIME = 0;
 
     public static void main(String[] args) {
-        //Allow the index on Park.name
-        MetaPark.ATT_NAME.setKey(true);
-
         KScheduler scheduler = new DirectScheduler();
         KInternalDataManager dataManager = DataManagerBuilder.create().withScheduler(scheduler).build();
 

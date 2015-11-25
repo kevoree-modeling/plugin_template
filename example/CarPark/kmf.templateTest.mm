@@ -1,5 +1,5 @@
 class kmf.templateTest.Park {
-    att name : String
+    att name : String with index
     rel cars : kmf.templateTest.Car
 }
 
