@@ -1,0 +1,119 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title id="title"></title>
+
+    <script type="text/javascript" src="org.kevoree.modeling.microframework.browser.js"></script>
+    <script type="text/javascript" src="org.kevoree.modeling.drivers.websocket.js"></script>
+    <script type="text/javascript" src="paperclip.js"></script>
+    <script type="text/javascript" src="parser.js"></script>
+
+    <!-- It is the JS API of my model, it is automatically generated. You can find it in the target/classes.
+     The name is the artefactid of the project, declared in the pom.-->
+    <script type="text/javascript" src="traverse.js"></script>
+
+    <link rel="stylesheet"
+          href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.light_blue-deep_orange.min.css"/>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+<body>
+
+<!-- A template to access an attribute  -->
+<template id="templateHeader">
+    My Parking - {{park.name}}
+</template>
+
+<template id="templateListCar">
+    <strong>List of cars : </strong> <br>
+    There is
+    <traverse src="{{park}}" query="cars" as="car">
+        {{car.length}}
+    </traverse>
+    cars.
+    <ul>
+
+        <repeat each="{{park.cars}}" as="car">
+            <li>{{car.name}}</li>
+        </repeat>
+    </ul>
+
+
+</template>
+
+<template id="templateListTyres">
+    <strong>List of tyres</strong> <br>
+    <ul>
+        <repeat each="{{park.cars}}" as="car">
+            <li>{{car.name}}</li>
+            <ul>
+                <repeat each="{{car.winterTyres}}" as="tyre">
+                    <li>{{tyre.mark}} with color
+                    <traverse src="{{tyre}}" query="color" as="c">
+                        {{c[0].color}}
+                    </traverse>
+                    </li>
+                </repeat>
+            </ul>
+        </repeat>
+    </ul>
+</template>
+
+<script>
+    var wsClient = new org.kevoree.modeling.drivers.websocket.WebSocketPeer("ws://" + window.location.hostname + ":8083/cdn");
+    var dataManager = org.kevoree.modeling.memory.manager.DataManagerBuilder.create().withContentDeliveryDriver(wsClient).build();
+    var model = new kmf.TemplateTestModel(dataManager);
+
+    var time = 0;
+
+    model.connect(function () {
+        model.lookup(0, 0, 1, function (park) {
+            //add the park name in the header
+            var t = paperclip.template(document.getElementById("templateHeader").innerHTML);
+            var v = t.view({park: park});
+            document.getElementById("header").appendChild(v.render());
+
+            //list all the car
+            var t2 = paperclip.template(document.getElementById("templateListCar").innerHTML);
+            var v2 = t2.view({park: park});
+            document.getElementById("carList").appendChild(v2.render());
+
+            //list of tyres
+            var t4 = paperclip.template(document.getElementById("templateListTyres").innerHTML);
+            var v4 = t4.view({park: park});
+            document.getElementById("winterTyreList").appendChild(v4.render());
+        });
+    });
+
+
+    function addCar() {
+        var car = model.createCar(0, 0);
+        car.setName("newCar");
+
+        model.connect(function () {
+            model.lookup(0, 0, 1, function (park) {
+                park.addByName("cars", car);
+                model.save(function () {
+                    model.disconnect(location.reload())
+                });
+            })
+        });
+    }
+
+</script>
+
+<h1 id="header"></h1>
+
+<div id="carList">
+
+</div>
+<div id="winterTyreList"></div>
+
+<button onclick="addCar()">Add a car</button>
+
+
+</body>
+</html>
