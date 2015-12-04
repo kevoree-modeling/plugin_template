@@ -58,7 +58,7 @@ Add the plugin to build the API from the metamodel.
 <plugin>
     <groupId>org.kevoree.modeling</groupId>
     <artifactId>org.kevoree.modeling.generator.mavenplugin</artifactId>
-    <version>${kmf.version}</version>
+    <version>4.26.1-SNAPSHOT</version>
     <executions>
         <execution>
             <id>ModelGen</id>
