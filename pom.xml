@@ -25,12 +25,12 @@
         <!-- KMF dependency -->
         <dependency>
             <groupId>org.kevoree.modeling</groupId>
-            <artifactId>org.kevoree.modeling.microframework</artifactId>
+            <artifactId>microframework</artifactId>
             <version>${kmf.version}</version>
         </dependency>
         <dependency>
             <groupId>org.kevoree.modeling</groupId>
-            <artifactId>org.kevoree.modeling.microframework.browser</artifactId>
+            <artifactId>microframework.browser</artifactId>
             <version>${kmf.version}</version>
         </dependency>
         <!-- Test dependencies -->
@@ -41,9 +41,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.kevoree.modeling</groupId>
-            <artifactId>org.kevoree.modeling.microframework.drivers.websocket</artifactId>
-            <version>${kmf.version}</version>
+            <groupId>org.kevoree.modeling.plugin</groupId>
+            <artifactId>websocket</artifactId>
+            <version>4.27.0-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
