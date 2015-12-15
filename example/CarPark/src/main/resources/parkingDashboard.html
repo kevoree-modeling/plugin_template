@@ -5,10 +5,8 @@
 
     <title id="title"></title>
 
-    <script type="text/javascript" src="org.kevoree.modeling.microframework.browser.js"></script>
-    <script type="text/javascript" src="org.kevoree.modeling.drivers.websocket.js"></script>
-    <script type="text/javascript" src="paperclip.js"></script>
-    <script type="text/javascript" src="parser.js"></script>
+    <script src="template.js"></script>
+    <script src="plugin.websocket.js"></script>
 
     <!-- It is the JS API of my model, it is automatically generated. You can find it in the target/classes.
      The name is the artefactid of the project, declared in the pom.-->
@@ -63,7 +61,7 @@
 </template>
 
 <script>
-    var wsClient = new org.kevoree.modeling.drivers.websocket.WebSocketPeer("ws://" + window.location.hostname + ":8083/cdn");
+    var wsClient = new org.kevoree.modeling.plugin.WebSocketClientPlugin("ws://" + window.location.hostname + ":8083/cdn");
     var dataManager = org.kevoree.modeling.memory.manager.DataManagerBuilder.create().withContentDeliveryDriver(wsClient).build();
     var model = new kmf.TemplateTestModel(dataManager);
 

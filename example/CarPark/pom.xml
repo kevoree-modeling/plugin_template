@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <kmf.version>4.26.1-SNAPSHOT</kmf.version>
+        <kmf.version>4.27.1-SNAPSHOT</kmf.version>
         <java2typescript.plugin.version>46</java2typescript.plugin.version>
     </properties>
 
@@ -18,15 +18,15 @@
         <!-- The framework to compile the model and create the API of this model -->
         <dependency>
             <groupId>org.kevoree.modeling</groupId>
-            <artifactId>org.kevoree.modeling.microframework</artifactId>
+            <artifactId>microframework</artifactId>
             <version>${kmf.version}</version>
         </dependency>
 
 
         <!-- The drivers to send the model on socket -->
         <dependency>
-            <groupId>org.kevoree.modeling</groupId>
-            <artifactId>org.kevoree.modeling.microframework.drivers.websocket</artifactId>
+            <groupId>org.kevoree.modeling.plugin</groupId>
+            <artifactId>websocket</artifactId>
             <version>${kmf.version}</version>
         </dependency>
 
@@ -42,7 +42,7 @@
         <plugins>
             <plugin>
                 <groupId>org.kevoree.modeling</groupId>
-                <artifactId>org.kevoree.modeling.generator.mavenplugin</artifactId>
+                <artifactId>generator.mavenplugin</artifactId>
                 <version>${kmf.version}</version>
                 <executions>
                     <execution>

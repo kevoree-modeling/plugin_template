@@ -34,15 +34,15 @@ Add the dependencies to the framework, the webSocket driver (we use it to send t
 <!-- The framework to compile the model and create the API of this model -->
 <dependency>
     <groupId>org.kevoree.modeling</groupId>
-    <artifactId>org.kevoree.modeling.microframework</artifactId>
-    <version>4.26.1-SNAPSHOT</version>
+    <artifactId>microframework</artifactId>
+    <version>4.27.1-SNAPSHOT</version> <!-- Replace by the last version of KMF -->
 </dependency>
 
 <!-- The drivers to send the model on socket -->
 <dependency>
-    <groupId>org.kevoree.modeling</groupId>
-    <artifactId>org.kevoree.modeling.microframework.drivers.websocket</artifactId>
-    <version>4.26.1-SNAPSHOT</version>
+    <groupId>org.kevoree.modeling.plugin</groupId>
+    <artifactId>websocket</artifactId>
+    <version>4.27.1-SNAPSHOT</version> <!-- Replace by the last version of KMF -->
 </dependency>
 
 <!-- The plugin template -->
@@ -57,8 +57,8 @@ Add the plugin to build the API from the metamodel.
 ```
 <plugin>
     <groupId>org.kevoree.modeling</groupId>
-    <artifactId>org.kevoree.modeling.generator.mavenplugin</artifactId>
-    <version>4.26.1-SNAPSHOT</version>
+    <artifactId>generator.mavenplugin</artifactId>
+    <version>4.27.1-SNAPSHOT</version>
     <executions>
         <execution>
             <id>ModelGen</id>
@@ -107,7 +107,7 @@ I let you see the JAVA code, it is quiet simple. The most important part to see 
 ### Third step : play with the template
 At the beginning, you should create a new model which receive somme data from a websocket : 
 ```
-var wsClient = new org.kevoree.modeling.drivers.websocket.WebSocketPeer("ws://" + window.location.hostname + ":8083/cdn");
+var wsClient = new org.kevoree.modeling.plugin.WebSocketClientPlugin("ws://" + window.location.hostname + ":8083/cdn");
 var dataManager = org.kevoree.modeling.memory.manager.DataManagerBuilder.create().withContentDeliveryDriver(wsClient).build();
 var model = new kmf.TemplateTestModel(dataManager);
 ```

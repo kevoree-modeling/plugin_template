@@ -4,19 +4,16 @@ import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.server.handlers.resource.ClassPathResourceManager;
 import kmf.TemplateTestModel;
-import kmf.templateTest.*;
+import kmf.templateTest.Car;
 import kmf.templateTest.Color;
-import kmf.templateTest.meta.MetaCar;
-import kmf.templateTest.meta.MetaPark;
+import kmf.templateTest.Park;
+import kmf.templateTest.WinterTyre;
 import org.kevoree.modeling.KCallback;
-import org.kevoree.modeling.KObject;
-import org.kevoree.modeling.drivers.websocket.gateway.WebSocketGateway;
 import org.kevoree.modeling.memory.manager.DataManagerBuilder;
 import org.kevoree.modeling.memory.manager.internal.KInternalDataManager;
+import org.kevoree.modeling.plugin.WebSocketGateway;
 import org.kevoree.modeling.scheduler.KScheduler;
 import org.kevoree.modeling.scheduler.impl.DirectScheduler;
-
-import java.awt.*;
 
 /**
  * Created by ludovicmouline on 25/11/15.
