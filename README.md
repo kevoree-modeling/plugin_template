@@ -35,21 +35,21 @@ Add the dependencies to the framework, the webSocket driver (we use it to send t
 <dependency>
     <groupId>org.kevoree.modeling</groupId>
     <artifactId>microframework</artifactId>
-    <version>4.27.1-SNAPSHOT</version> <!-- Replace by the last version of KMF -->
+    <version>4.27.0</version> <!-- Replace by the last version of KMF -->
 </dependency>
 
 <!-- The drivers to send the model on socket -->
 <dependency>
     <groupId>org.kevoree.modeling.plugin</groupId>
     <artifactId>websocket</artifactId>
-    <version>4.27.1-SNAPSHOT</version> <!-- Replace by the last version of KMF -->
+    <version>4.27.0</version> <!-- Replace by the last version of KMF -->
 </dependency>
 
 <!-- The plugin template -->
 <dependency>
     <groupId>org.kevoree.modeling.plugin</groupId>
     <artifactId>template</artifactId>
-    <version>4.27.0-SNAPSHOT</version>
+    <version>4.27.0</version>
 </dependency>
 ```
 
@@ -58,7 +58,7 @@ Add the plugin to build the API from the metamodel.
 <plugin>
     <groupId>org.kevoree.modeling</groupId>
     <artifactId>generator.mavenplugin</artifactId>
-    <version>4.27.1-SNAPSHOT</version>
+    <version>4.27.0</version>
     <executions>
         <execution>
             <id>ModelGen</id>
