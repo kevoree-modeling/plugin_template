@@ -34,22 +34,22 @@ Add the dependencies to the framework, the webSocket driver (we use it to send t
 <!-- The framework to compile the model and create the API of this model -->
 <dependency>
     <groupId>org.kevoree.modeling</groupId>
-    <artifactId>org.kevoree.modeling.microframework</artifactId>
-    <version>4.26.1-SNAPSHOT</version>
+    <artifactId>microframework</artifactId>
+    <version>4.27.0</version>
 </dependency>
 
 <!-- The drivers to send the model on socket -->
 <dependency>
     <groupId>org.kevoree.modeling</groupId>
-    <artifactId>org.kevoree.modeling.microframework.drivers.websocket</artifactId>
-    <version>4.26.1-SNAPSHOT</version>
+    <artifactId>plugin.websocket</artifactId>
+    <version>4.27.0</version>
 </dependency>
 
 <!-- The plugin template -->
 <dependency>
     <groupId>org.kevoree.modeling.plugin</groupId>
     <artifactId>template</artifactId>
-    <version>4.27.0-SNAPSHOT</version>
+    <version>4.27.0</version>
 </dependency>
 ```
 
@@ -57,8 +57,8 @@ Add the plugin to build the API from the metamodel.
 ```
 <plugin>
     <groupId>org.kevoree.modeling</groupId>
-    <artifactId>org.kevoree.modeling.generator.mavenplugin</artifactId>
-    <version>4.26.1-SNAPSHOT</version>
+    <artifactId>generator.mavenplugin</artifactId>
+    <version>4.27.0</version>
     <executions>
         <execution>
             <id>ModelGen</id>
