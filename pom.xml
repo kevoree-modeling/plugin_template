@@ -9,7 +9,8 @@
     <name>KMF :: Plugin :: Template</name>
 
     <properties>
-        <kmf.version>4.26.1-SNAPSHOT</kmf.version>
+        <kmf.version>4.27.0</kmf.version>
+        <plugin.websocket.version>4.27.0</plugin.websocket.version>
         <undertow.version>1.3.6.Final</undertow.version>
         <java2typescript.plugin.version>46</java2typescript.plugin.version>
     </properties>
@@ -43,7 +44,7 @@
         <dependency>
             <groupId>org.kevoree.modeling.plugin</groupId>
             <artifactId>websocket</artifactId>
-            <version>4.27.0-SNAPSHOT</version>
+            <version>${plugin.websocket.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

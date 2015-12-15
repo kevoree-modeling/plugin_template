@@ -1,19 +1,17 @@
-package org.kevoree.modeling.addons.template;
+package org.kevoree.modeling.plugin.template;
 
 import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.server.handlers.resource.ClassPathResourceManager;
 import org.kevoree.modeling.*;
-import org.kevoree.modeling.drivers.websocket.gateway.WebSocketGateway;
 import org.kevoree.modeling.memory.manager.DataManagerBuilder;
 import org.kevoree.modeling.memory.manager.internal.KInternalDataManager;
 import org.kevoree.modeling.meta.*;
 import org.kevoree.modeling.meta.impl.MetaModel;
+import org.kevoree.modeling.plugin.WebSocketGateway;
 import org.kevoree.modeling.scheduler.impl.DirectScheduler;
 
 import java.util.Random;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 public class TimeMachineTest {
 
@@ -24,7 +22,6 @@ public class TimeMachineTest {
         KMetaClass sensorClass = metaModel.addMetaClass("Sensor");
         KMetaAttribute sensorValueAtt = sensorClass.addAttribute("value", KPrimitiveTypes.LONG);
         KMetaRelation sensorsRef = sensorClass.addRelation("sensors", sensorClass, null);
-        
         KInternalDataManager manager = DataManagerBuilder.create().withScheduler(new DirectScheduler()).build();
         KModel model = metaModel.createModel(manager);
         model.connect(new KCallback() {
@@ -32,7 +29,6 @@ public class TimeMachineTest {
             public void on(Object o) {
                 KObject sensor = model.create(sensorClass, 0, 0);
                 sensor.set(sensorValueAtt, "42");
-
                 KListener listener = model.universe(0).createListener();
                 listener.listen(sensor);
                 listener.then(new KCallback<KObject>() {
@@ -41,18 +37,13 @@ public class TimeMachineTest {
                         System.err.println("Update : " + kObject.toJSON());
                     }
                 });
-
                 KObject sensor2 = model.create(sensorClass, 0, 0);
                 sensor2.set(sensorValueAtt, "43");
-
                 KObject sensor3 = model.create(sensorClass, 0, 0);
                 sensor3.set(sensorValueAtt, "44");
-
                 sensor.add(sensorsRef, sensor2);
                 sensor.add(sensorsRef, sensor3);
-
                 Random rand = new Random();
-
                 long[] uuids = new long[]{sensor.uuid(), sensor2.uuid(), sensor3.uuid()};
                 KCallback<KObject[]> jumped = new KCallback<KObject[]>() {
                     public void on(KObject[] kObjects) {
@@ -66,8 +57,6 @@ public class TimeMachineTest {
                 for (int i = 0; i < 10; i++) {
                     model.manager().lookupAllObjects(0, i, uuids, jumped);
                 }
-
-
             }
         });
 

@@ -1,16 +1,15 @@
-package org.kevoree.modeling.addons.template;
+package org.kevoree.modeling.plugin.template;
 
 import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.server.handlers.resource.ClassPathResourceManager;
 import org.kevoree.modeling.*;
-import org.kevoree.modeling.drivers.websocket.gateway.WebSocketGateway;
 import org.kevoree.modeling.infer.KInferAlgFactory;
 import org.kevoree.modeling.memory.manager.DataManagerBuilder;
-import org.kevoree.modeling.memory.manager.KDataManager;
 import org.kevoree.modeling.memory.manager.internal.KInternalDataManager;
 import org.kevoree.modeling.meta.*;
 import org.kevoree.modeling.meta.impl.MetaModel;
+import org.kevoree.modeling.plugin.WebSocketGateway;
 import org.kevoree.modeling.scheduler.impl.DirectScheduler;
 
 import java.util.concurrent.Executors;
