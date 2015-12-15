@@ -149,9 +149,9 @@
     </parent>
 
     <scm>
-        <connection>scm:git:git@github.com:kevoree-modeling/plugin_rest.git</connection>
-        <developerConnection>scm:git:git@github.com:kevoree-modeling/plugin_rest.git</developerConnection>
-        <url>http://github.com/kevoree-modeling/plugin_rest.git</url>
+        <connection>scm:git:git@github.com:kevoree-modeling/plugin_template.git</connection>
+        <developerConnection>scm:git:git@github.com:kevoree-modeling/plugin_template.git</developerConnection>
+        <url>http://github.com/kevoree-modeling/plugin_template.git</url>
     </scm>
 
 </project>
