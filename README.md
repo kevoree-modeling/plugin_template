@@ -1,5 +1,13 @@
-# plugin_template
+# KMF Template Plugin: JS DOM rendering using models
 This plugin offers a JavaScript template to display KMF Model as HTML content
+
+## Last versions:
+
+- 4.27.0 compatible with KMF framework 4.27.x
+
+## Changelog
+
+- 4.27.0 rename JS plugin file in template.js and template.min.js
 
 ## API usage
 
